@@ -1,0 +1,94 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">一些快速定位页面问题的技巧 · undefined</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><header><h1 class="hide_on_mobile"><a href="/"></a></h1><nav><ul><li class="show_on_mobile flex_center"><a class="czs-menu-l" href="#" style="background-image:url(&quot;/assets/czs-menu-l.svg&quot;)"></a></li><li class="show_on_mobile"><h1 class="mobile_title"><a href="/"></a></h1></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul></nav></header><aside class="sidebar"><ol class="list_style_none"><li class=""><a href="/index.html" class="nav_link">首页</a></li><li class=""><a href="/debug.html" class="nav_link active">一些快速定位页面问题的技巧</a></li><li class=""><a href="/test.html" class="nav_link">test</a></li></ol></aside><section class="main"><div class="main_article"><article><h1>一些快速定位页面问题的技巧</h1>
+<h2 id="1-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83">1. 测试环境<a class="anchor" href="#1-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83">§</a></h2>
+<h3 id="%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95%E8%80%8C%E9%9D%9E%E6%9C%AC%E5%9C%B0%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95">使用测试环境测试而非本地搭建前端环境进行测试<a class="anchor" href="#%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95%E8%80%8C%E9%9D%9E%E6%9C%AC%E5%9C%B0%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95">§</a></h3>
+<p>前端配置已更新,使用测试环境测试无需每次前端更新代码后 ctrl f5 强制刷新页面</p>
+<h2 id="2-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7">2. 浏览器开发者工具<a class="anchor" href="#2-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7">§</a></h2>
+<h3 id="%E6%83%B3%E8%A6%81%E5%88%9D%E6%AD%A5%E5%AE%9A%E4%BD%8D%E9%94%99%E8%AF%AF%E5%8F%AF%E4%BB%A5%E5%85%88f12%E6%89%93%E5%BC%80-chrome-%E7%9A%84-devtool%E5%88%AB%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%9F%E4%B8%80%E6%A0%B7">想要初步定位错误，可以先F12打开 chrome 的 devtool，别的浏览器也一样<a class="anchor" href="#%E6%83%B3%E8%A6%81%E5%88%9D%E6%AD%A5%E5%AE%9A%E4%BD%8D%E9%94%99%E8%AF%AF%E5%8F%AF%E4%BB%A5%E5%85%88f12%E6%89%93%E5%BC%80-chrome-%E7%9A%84-devtool%E5%88%AB%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%9F%E4%B8%80%E6%A0%B7">§</a></h3>
+<h3 id="%E6%B5%8F%E8%A7%88%E5%99%A8-devtool">浏览器 devtool<a class="anchor" href="#%E6%B5%8F%E8%A7%88%E5%99%A8-devtool">§</a></h3>
+<ul>
+<li>就是这个:</li>
+</ul>
+<p><img src="./assets/devtool.jpg" alt="devtool图片"></p>
+<p>前端成员外定位 bug 所需要关注的基本是两块地方的内容</p>
+<ol>
+<li>
+<p>Console</p>
+</li>
+<li>
+<p>Network</p>
+</li>
+</ol>
+<p>这两个标签页点 <img src="./assets/clear.jpg" alt="清除图片"> 可以清空信息</p>
+<p>network 下面的信息需要刷新页面前打开 devtool 有请求才会显示数据，一般是这样</p>
+<p><img src="./assets/network.jpg" alt="network图片"></p>
+<p>如果没有信息，就请 F5 刷新页面</p>
+<p>可以看到上面图片浏览器请求的资源非常多，看起来不方便，可以点击上方的 XHR, 只查看我们需要的内容</p>
+<p><img src="./assets/xhr.jpg" alt="xhr图片"></p>
+<h2 id="3-%E9%94%99%E8%AF%AF%E5%AE%9A%E4%BD%8D">3. 错误定位<a class="anchor" href="#3-%E9%94%99%E8%AF%AF%E5%AE%9A%E4%BD%8D">§</a></h2>
+<h3 id="message-%E4%BF%A1%E6%81%AF">Message 信息<a class="anchor" href="#message-%E4%BF%A1%E6%81%AF">§</a></h3>
+<ul>
+<li>
+<p>项目的 Message 信息，也就是请求成功或者失败时的弹窗，是可以用来定位错误的，之前在 群里说的后端需要返回准确的 Message 信息目的也是能尽快定位错误，而不是一个错误要定位半天</p>
+</li>
+<li>
+<p>项目中的红框提示基本可以分成三种:</p>
+<ol>
+<li>
+<p>服务端错误:</p>
+<ul>
+<li>此时一般可以判断为后端问题，至少有此类错误没有对应的报错这个问题</li>
+<li>除此之外，有可能是前端传错参数，一般需要后端查看日志判明什么参数没传</li>
+</ul>
+</li>
+<li>
+<p>http lose</p>
+<ul>
+<li>
+<p>此時需要 f12 按上述图片中方式打开 devtool, 查看 xhr 中红色的请求，查看其 status</p>
+<ul>
+<li>
+<p>status 为 500, 一般为后端无响应，容器崩溃或重启，与代码无关, 可在下述的 preview 中查看是否有错误提示信息</p>
+</li>
+<li>
+<p>status 为 504, 超时，不一定和代码有关，需把情况反馈给后端</p>
+</li>
+<li>
+<p>status 为 404, 前端请求路径错误</p>
+</li>
+<li>
+<p>status 为 40X（最后一位是4以外的数）, 点击这个飘红的请求，右侧会弹出页面（下图为正常的请求，仅作示例）</p>
+</li>
+</ul>
+<p><img src="./assets/example-request.jpg" alt="图片"></p>
+<ul>
+<li>点击 preview, 查看其中的 message
+<ol>
+<li>如有 xxxx input 'xxxx(字段名)' 类似格式的错误，一般可判明为参数错误，此时点击图中 headers, 滚动条拉到最下方 可以看到前端上传的参数</li>
+<li>待完善</li>
+</ol>
+</li>
+</ul>
+<p><img src="./assets/params.jpg" alt="参数"></p>
+</li>
+</ul>
+</li>
+<li>
+<p>有明确的错误提示时，根据错误提示即可八九不离十判断到底是哪边出错</p>
+<ul>
+<li>提示 GENERAL，后端服务崩溃</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul></article></div><aside class="main_toc_container nav_link_container"><div class="main_toc"><nav class="toc"><ol><li><a href="#1-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83">1. 测试环境</a><ol><li><a href="#%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95%E8%80%8C%E9%9D%9E%E6%9C%AC%E5%9C%B0%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95">使用测试环境测试而非本地搭建前端环境进行测试</a></li></ol></li><li><a href="#2-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7">2. 浏览器开发者工具</a><ol><li><a href="#%E6%83%B3%E8%A6%81%E5%88%9D%E6%AD%A5%E5%AE%9A%E4%BD%8D%E9%94%99%E8%AF%AF%E5%8F%AF%E4%BB%A5%E5%85%88f12%E6%89%93%E5%BC%80-chrome-%E7%9A%84-devtool%E5%88%AB%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%9F%E4%B8%80%E6%A0%B7">想要初步定位错误，可以先F12打开 chrome 的 devtool，别的浏览器也一样</a></li><li><a href="#%E6%B5%8F%E8%A7%88%E5%99%A8-devtool">浏览器 devtool</a></li></ol></li><li><a href="#3-%E9%94%99%E8%AF%AF%E5%AE%9A%E4%BD%8D">3. 错误定位</a><ol><li><a href="#message-%E4%BF%A1%E6%81%AF">Message 信息</a></li></ol></li></ol></nav></div></aside></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>
