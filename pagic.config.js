@@ -1,6 +1,6 @@
 export default {
     theme: 'docs',
-    plugins: ['sidebar', 'tsx'],
+    plugins: ['sidebar'],
     sidebar: {
         '/': [
             'README.md',
