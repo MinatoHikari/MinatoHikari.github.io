@@ -1,6 +1,6 @@
 import projectConfig from '/pagic.config.js';
 export default {
-    config: { "root": "/", ...projectConfig, branch: '' },
+    config: { "root": "/", ...projectConfig, branch: 'master' },
     'pagePath': "README.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "index.html",
@@ -20,9 +20,11 @@ export default {
     'toc': React.createElement("aside", { dangerouslySetInnerHTML: {
             __html: '<nav class="toc"><ol><li><a href="#debug%E6%8A%80%E5%B7%A7">debug技巧</a></li></ol></nav>'
         } }),
-    'author': undefined,
-    'contributors': [],
-    'date': "2021-01-30T01:20:04.011Z",
+    'author': "MinatoHikari",
+    'contributors': [
+        "MinatoHikari"
+    ],
+    'date': "2021-01-30T15:43:20.000Z",
     'updated': null,
     'excerpt': "debug技巧",
     'cover': undefined,

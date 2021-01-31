@@ -1,13 +1,13 @@
 import projectConfig from '/pagic.config.js';
 import TSXtest from './test_content.js';
 export default {
-    config: { "root": "/", ...projectConfig, branch: '' },
+    config: { "root": "/", ...projectConfig, branch: 'master' },
     'pagePath': "test.tsx",
     'layoutPath': "_layout.tsx",
     'outputPath': "test.html",
     'title': "",
     'content': React.createElement(TSXtest, { config: {
-            branch: '',
+            branch: 'master',
             exclude: [
                 '**/.*',
                 '**/package.json',
