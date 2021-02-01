@@ -39,7 +39,7 @@
 <h3 id="message-%E4%BF%A1%E6%81%AF">Message 信息<a class="anchor" href="#message-%E4%BF%A1%E6%81%AF">§</a></h3>
 <ul>
 <li>
-<p>项目的 Message 信息，也就是请求成功或者失败时的弹窗，是可以用来定位错误的，之前在 群里说的后端需要返回准确的 Message 信息目的也是能尽快定位错误，而不是一个错误要定位半天</p>
+<p>项目的 Message 信息，也就是请求成功或者失败时的弹窗，是可以用来定位错误的，之前在群里说的后端需要返回准确的 Message 信息目的也是能尽快定位错误，而不是一个错误要定位半天</p>
 </li>
 <li>
 <p>项目中的红框提示基本可以分成三种:</p>
@@ -78,6 +78,7 @@
 <li>点击 preview, 查看其中的 message
 <ol>
 <li>如有 xxxx input 'xxxx(字段名)' 类似格式的错误，一般可判明为参数错误，此时点击图中 headers, 滚动条拉到最下方 可以看到前端上传的参数</li>
+<li>413 Request Entity Too Large, 超出上传限制，一般为后端或 nginx 限制，nginx 可联系前端修改</li>
 <li>待完善</li>
 </ol>
 </li>
@@ -94,4 +95,8 @@
 </li>
 </ol>
 </li>
-</ul></article></div><aside class="main_toc_container nav_link_container"><div class="main_toc"><nav class="toc"><ol><li><a href="#1-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83">1. 测试环境</a><ol><li><a href="#%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95%E8%80%8C%E9%9D%9E%E6%9C%AC%E5%9C%B0%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95">使用测试环境测试而非本地搭建前端环境进行测试</a></li></ol></li><li><a href="#2-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7">2. 浏览器开发者工具</a><ol><li><a href="#%E6%83%B3%E8%A6%81%E5%88%9D%E6%AD%A5%E5%AE%9A%E4%BD%8D%E9%94%99%E8%AF%AF%E5%8F%AF%E4%BB%A5%E5%85%88f12%E6%89%93%E5%BC%80-chrome-%E7%9A%84-devtool%E5%88%AB%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%9F%E4%B8%80%E6%A0%B7">想要初步定位错误，可以先F12打开 chrome 的 devtool，别的浏览器也一样</a></li><li><a href="#%E6%B5%8F%E8%A7%88%E5%99%A8-devtool">浏览器 devtool</a></li></ol></li><li><a href="#3-%E9%94%99%E8%AF%AF%E5%AE%9A%E4%BD%8D">3. 错误定位</a><ol><li><a href="#message-%E4%BF%A1%E6%81%AF">Message 信息</a></li></ol></li></ol></nav></div></aside></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>
+</ul>
+<h3 id="%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E6%97%A0%E5%8F%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E7%82%B9%E4%BB%BB%E4%BD%95%E5%9C%B0%E6%96%B9%E9%83%BD%E6%97%A0%E5%93%8D%E5%BA%94">点击按钮无反应，页面点任何地方都无响应<a class="anchor" href="#%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E6%97%A0%E5%8F%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E7%82%B9%E4%BB%BB%E4%BD%95%E5%9C%B0%E6%96%B9%E9%83%BD%E6%97%A0%E5%93%8D%E5%BA%94">§</a></h3>
+<ul>
+<li>打开 devtool, 查看 console 中是否有红色错误，截图发给前端（没有红色报错为校验出错，一般有黄色的警告）</li>
+</ul></article></div><aside class="main_toc_container nav_link_container"><div class="main_toc"><nav class="toc"><ol><li><a href="#1-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83">1. 测试环境</a><ol><li><a href="#%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E6%B5%8B%E8%AF%95%E8%80%8C%E9%9D%9E%E6%9C%AC%E5%9C%B0%E6%90%AD%E5%BB%BA%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83%E8%BF%9B%E8%A1%8C%E6%B5%8B%E8%AF%95">使用测试环境测试而非本地搭建前端环境进行测试</a></li></ol></li><li><a href="#2-%E6%B5%8F%E8%A7%88%E5%99%A8%E5%BC%80%E5%8F%91%E8%80%85%E5%B7%A5%E5%85%B7">2. 浏览器开发者工具</a><ol><li><a href="#%E6%83%B3%E8%A6%81%E5%88%9D%E6%AD%A5%E5%AE%9A%E4%BD%8D%E9%94%99%E8%AF%AF%E5%8F%AF%E4%BB%A5%E5%85%88f12%E6%89%93%E5%BC%80-chrome-%E7%9A%84-devtool%E5%88%AB%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E4%B9%9F%E4%B8%80%E6%A0%B7">想要初步定位错误，可以先F12打开 chrome 的 devtool，别的浏览器也一样</a></li><li><a href="#%E6%B5%8F%E8%A7%88%E5%99%A8-devtool">浏览器 devtool</a></li></ol></li><li><a href="#3-%E9%94%99%E8%AF%AF%E5%AE%9A%E4%BD%8D">3. 错误定位</a><ol><li><a href="#message-%E4%BF%A1%E6%81%AF">Message 信息</a></li><li><a href="#%E7%82%B9%E5%87%BB%E6%8C%89%E9%92%AE%E6%97%A0%E5%8F%8D%E5%BA%94%E9%A1%B5%E9%9D%A2%E7%82%B9%E4%BB%BB%E4%BD%95%E5%9C%B0%E6%96%B9%E9%83%BD%E6%97%A0%E5%93%8D%E5%BA%94">点击按钮无反应，页面点任何地方都无响应</a></li></ol></li></ol></nav></div></aside></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

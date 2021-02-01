@@ -25,7 +25,7 @@ export default {
     'contributors': [
         "MinatoHikari"
     ],
-    'date': "2021-01-31T10:40:00.000Z",
+    'date': "2021-02-01T17:47:57.000Z",
     'updated': null,
     'excerpt': "debug技巧",
     'cover': undefined,
