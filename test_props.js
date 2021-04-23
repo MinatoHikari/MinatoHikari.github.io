@@ -38,6 +38,12 @@ export default {
             sidebar: {
                 '/': [
                     'README.md',
+                    {
+                        children: [
+                            'notes/massager.md'
+                        ],
+                        text: '随笔'
+                    },
                     'debug.md',
                     {
                         link: 'test.tsx',
@@ -59,6 +65,16 @@ export default {
             "text": "首页",
             "link": "index.html",
             "pagePath": "README.md"
+        },
+        {
+            "text": "随笔",
+            "children": [
+                {
+                    "text": "递归 按摩师 —— 交流群群面试题的思考",
+                    "link": "notes/massager.html",
+                    "pagePath": "notes/massager.md"
+                }
+            ]
         },
         {
             "text": "一些快速定位页面问题的技巧",
