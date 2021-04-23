@@ -77,3 +77,9 @@ network 下面的信息需要刷新页面前打开 devtool 有请求才会显示
 ### 点击按钮无反应，页面点任何地方都无响应
 
 - 打开 devtool, 查看 console 中是否有红色错误，截图发给前端（没有红色报错为校验出错，一般有黄色的警告）
+
+### 下载文件错误
+
+- 响应头错误 Content-Type: application/force-download
+
+应该为 Content-Disposition: attachment;filename=XXXXXX
