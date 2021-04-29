@@ -44,7 +44,13 @@ export default {
                         ],
                         text: '随笔'
                     },
-                    'debug.md',
+                    {
+                        children: [
+                            'summary/debug.md',
+                            'summary/http-requests.md'
+                        ],
+                        text: '总结'
+                    },
                     {
                         link: 'test.tsx',
                         text: 'test'
@@ -77,9 +83,19 @@ export default {
             ]
         },
         {
-            "text": "一些快速定位页面问题的技巧",
-            "link": "debug.html",
-            "pagePath": "debug.md"
+            "text": "总结",
+            "children": [
+                {
+                    "text": "一些快速定位页面问题的技巧",
+                    "link": "summary/debug.html",
+                    "pagePath": "summary/debug.md"
+                },
+                {
+                    "text": "前后端交互数据格式",
+                    "link": "summary/http-requests.html",
+                    "pagePath": "summary/http-requests.md"
+                }
+            ]
         },
         {
             "text": "test",

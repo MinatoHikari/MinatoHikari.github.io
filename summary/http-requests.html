@@ -1,0 +1,114 @@
+<!doctype html><html class="" data-reactroot=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/>
+<title data-react-helmet="true">前后端交互数据格式 · undefined</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><header><h1 class="hide_on_mobile"><a href="/"></a></h1><nav><ul><li class="show_on_mobile flex_center"><a class="czs-menu-l" href="#" style="background-image:url(&quot;/assets/czs-menu-l.svg&quot;)"></a></li><li class="show_on_mobile"><h1 class="mobile_title"><a href="/"></a></h1></li><li style="flex-grow:1"></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul></nav></header><aside class="sidebar"><ol class="list_style_none"><li class=""><a href="/index.html" class="nav_link">首页</a></li><li class="unfold"><a href="#" class="nav_link no_link">随笔<span class="czs-angle-up-l" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></span><span class="czs-angle-down-l" style="background-image:url(&quot;/assets/czs-angle-down-l.svg&quot;)"></span></a><ol class="list_style_none" style="height:auto"><li class=""><a href="/notes/massager.html" class="nav_link">递归 按摩师 —— 交流群群面试题的思考</a></li></ol></li><li class="unfold"><a href="#" class="nav_link no_link">总结<span class="czs-angle-up-l" style="background-image:url(&quot;/assets/czs-angle-up-l.svg&quot;)"></span><span class="czs-angle-down-l" style="background-image:url(&quot;/assets/czs-angle-down-l.svg&quot;)"></span></a><ol class="list_style_none" style="height:auto"><li class=""><a href="/summary/debug.html" class="nav_link">一些快速定位页面问题的技巧</a></li><li class=""><a href="/summary/http-requests.html" class="nav_link active">前后端交互数据格式</a></li></ol></li><li class=""><a href="/test.html" class="nav_link">test</a></li></ol></aside><section class="main"><div class="main_article"><article><h1>前后端交互数据格式</h1>
+<h2 id="getdelete-%E8%AF%B7%E6%B1%82%E5%92%8C-postput%E8%AF%B7%E6%B1%82%E5%90%8E%E7%AB%AF%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0">GET、DELETE 请求和 POST、PUT请求后端接收参数<a class="anchor" href="#getdelete-%E8%AF%B7%E6%B1%82%E5%92%8C-postput%E8%AF%B7%E6%B1%82%E5%90%8E%E7%AB%AF%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0">§</a></h2>
+<p>JS 中 <code>XMLHttpRequest</code> 和 <code>fetch</code> 不允许 <code>GET</code> 请求携带请求体 <code>requestbody</code>, <code>DELETE</code> 请求由于可能会在经过代理服务器时丢失 <code>entity body</code> 所以和 <code>GET</code>
+请求一样处理</p>
+<p>上述两种请求的传参方式为在 <code>url</code> 后面携带字符串</p>
+<p><code>POST</code> 和 <code>PUT</code> 请求参数统一放在请求体重，禁止出现一部分参数放在 <code>url</code> 之后，一部分参数放在请求体中的做法。</p>
+<h3 id="%E5%AF%B9-url-%E7%9A%84%E5%90%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86%E7%9A%84%E8%AF%B4%E6%98%8E">对 <code>url</code> 的各组成部分的说明<a class="anchor" href="#%E5%AF%B9-url-%E7%9A%84%E5%90%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86%E7%9A%84%E8%AF%B4%E6%98%8E">§</a></h3>
+<p>以 <code>http://localhost/api/sendRequest?name=xxx&amp;age=xxx&amp;sex=xxx#detail</code> 为例</p>
+<p><code>?name=xxx&amp;age=xxx&amp;sex=xxx</code> 问号连带后面 key=value&amp;key=value 格式的多组键值对， js 中称为 <code>urlSearchParams</code> 直译过来就是查询参数。下文的 <code>query</code> 方式传参就是它</p>
+<p><code>#detail</code> 井号连带后面的字符串 js 中称为 <code>hash</code></p>
+<blockquote>
+<p>参考文档：<a href="https://developer.mozilla.org/zh-CN/docs/Web/API/URL">MDN/URL</a></p>
+</blockquote>
+<h3 id="%E4%B8%8B%E9%9D%A2%E9%80%9A%E8%BF%87%E5%87%A0%E4%B8%AA%E4%BE%8B%E5%AD%90%E5%8C%BA%E5%88%86%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E7%9A%84%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F">下面通过几个例子区分前后端交互的数据格式<a class="anchor" href="#%E4%B8%8B%E9%9D%A2%E9%80%9A%E8%BF%87%E5%87%A0%E4%B8%AA%E4%BE%8B%E5%AD%90%E5%8C%BA%E5%88%86%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E7%9A%84%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F">§</a></h3>
+<ol>
+<li>
+<p><code>path</code> 传参</p>
+<ul>
+<li>url 示例：<a href="http://localhost/api/%7Bparams%7D">http://localhost/api/{params}</a></li>
+<li>此种方式直接以路径名作为参数</li>
+<li><code>SpringBoot</code> 注解：</li>
+</ul>
+<pre class="language-java"><code class="language-java"> <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/car/{id}/owner/{username}"</span><span class="token punctuation">)</span>
+ <span class="token keyword">public</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Object</span><span class="token punctuation">></span></span> <span class="token function">getCar</span><span class="token punctuation">(</span>
+     <span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span> <span class="token class-name">Integer</span> id<span class="token punctuation">,</span>
+     <span class="token annotation punctuation">@PathVariable</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> name<span class="token punctuation">,</span>
+ <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">,</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token keyword">return</span> map<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>      
+</code></pre>
+<p>这里的 <code>@PathVariable(&quot;id&quot;)</code> 获取的就是 <code>path</code> 中对应的占位符 <code>{id}</code> 的值</p>
+</li>
+<li>
+<p><code>query</code> 传参</p>
+<ul>
+<li>url 示例：<a href="http://localhost/api/getBody?userId=xxx&amp;age=xxx">http://localhost/api/getBody?userId=xxx&amp;age=xxx</a></li>
+<li>此种方式以 <code>?key=value&amp;key2=value2&amp;key3=value3</code> 格式传递参数 （上文说的 <code>urlSearchParams</code>）</li>
+<li><code>SpringBoot</code> 注解：</li>
+</ul>
+<pre class="language-java"><code class="language-java"> <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span><span class="token string">"/user"</span><span class="token punctuation">)</span>
+ <span class="token keyword">public</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Object</span><span class="token punctuation">></span></span> <span class="token function">getUser</span><span class="token punctuation">(</span>
+     <span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">)</span> <span class="token class-name">Integer</span> age<span class="token punctuation">,</span>
+     <span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> name<span class="token punctuation">,</span>
+ <span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token keyword">return</span> map<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>   
+</code></pre>
+<p>如果 <code>GET</code> 请求路径为 <code>/user?age=1&amp;name=张三</code> 那么 <code>@RequestParam(&quot;age&quot;)</code> 获取的 <code>age</code> 就是 <code>1</code>, <code>@RequestParam(&quot;inters&quot;)</code> 获取的 <code>name</code>
+就是 <code>张三</code></p>
+<ul>
+<li><code>Swaager</code> 注解<pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@ApiImplicitParams</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@ApiImplicitParam</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"姓名"</span><span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token string">"name"</span><span class="token punctuation">,</span> required <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">,</span>dataType <span class="token operator">=</span> <span class="token string">"String"</span><span class="token punctuation">,</span>paramType <span class="token operator">=</span> <span class="token string">"query"</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+</li>
+</ul>
+</li>
+<li>
+<p><code>body</code> 传参</p>
+<ul>
+<li><code>body</code> 传参参数格式统一般只使用两种格式 —— <code>JSON</code> <code>FormData</code></li>
+<li><code>JSON</code> 传参
+<ul>
+<li>需要定义DTO来接收前端传参</li>
+<li><code>SpringBoot</code> 注解：</li>
+</ul>
+<pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"/demo1"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">demo1</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> <span class="token class-name">Person</span> person<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>person<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</li>
+<li><code>formData</code> 传参
+<ul>
+<li>可用 <code>@RequestParam</code> 接收参数</li>
+<li>需要额外的swagger标注以注明前端需要传formData:</li>
+</ul>
+<pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@ApiImplicitParams</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token annotation punctuation">@ApiImplicitParam</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"姓名"</span><span class="token punctuation">,</span> name <span class="token operator">=</span> <span class="token string">"name"</span><span class="token punctuation">,</span> required <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">,</span>dataType <span class="token operator">=</span> <span class="token string">"String"</span><span class="token punctuation">,</span>paramType <span class="token operator">=</span> <span class="token string">"form"</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+<ul>
+<li><code>SpringBoot</code> 注解：<pre class="language-java"><code class="language-java"><span class="token annotation punctuation">@PutMapping</span><span class="token punctuation">(</span><span class="token string">"/updateUser"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span><span class="token class-name">Object</span><span class="token punctuation">></span></span> <span class="token function">getUser</span><span class="token punctuation">(</span>
+    <span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">)</span> <span class="token class-name">Integer</span> age<span class="token punctuation">,</span>
+    <span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span> <span class="token class-name">String</span> name<span class="token punctuation">,</span>
+<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"age"</span><span class="token punctuation">,</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> map<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>  
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol></article></div><aside class="main_toc_container nav_link_container"><div class="main_toc"><nav class="toc"><ol><li><a href="#getdelete-%E8%AF%B7%E6%B1%82%E5%92%8C-postput%E8%AF%B7%E6%B1%82%E5%90%8E%E7%AB%AF%E6%8E%A5%E6%94%B6%E5%8F%82%E6%95%B0">GET、DELETE 请求和 POST、PUT请求后端接收参数</a><ol><li><a href="#%E5%AF%B9-url-%E7%9A%84%E5%90%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86%E7%9A%84%E8%AF%B4%E6%98%8E">对 url 的各组成部分的说明</a></li><li><a href="#%E4%B8%8B%E9%9D%A2%E9%80%9A%E8%BF%87%E5%87%A0%E4%B8%AA%E4%BE%8B%E5%AD%90%E5%8C%BA%E5%88%86%E5%89%8D%E5%90%8E%E7%AB%AF%E4%BA%A4%E4%BA%92%E7%9A%84%E6%95%B0%E6%8D%AE%E6%A0%BC%E5%BC%8F">下面通过几个例子区分前后端交互的数据格式</a></li></ol></li></ol></nav></div></aside></section><footer>Powered by <a href="https://github.com/xcatliu/pagic" target="_blank">Pagic</a></footer><script src="https://cdn.pagic.org/react@16.13.1/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@16.13.1/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>
