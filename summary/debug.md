@@ -14,7 +14,7 @@
 
 - 就是这个:
 
-![devtool图片](./assets/devtool.jpg)
+![devtool图片](../assets/devtool.jpg)
 
 前端成员外定位 bug 所需要关注的基本是两块地方的内容
 
@@ -22,17 +22,17 @@
 
 2. Network
 
-这两个标签页点 ![清除图片](./assets/clear.jpg) 可以清空信息
+这两个标签页点 ![清除图片](../assets/clear.jpg) 可以清空信息
 
 network 下面的信息需要刷新页面前打开 devtool 有请求才会显示数据，一般是这样
 
-![network图片](./assets/network.jpg)
+![network图片](../assets/network.jpg)
 
 如果没有信息，就请 F5 刷新页面
 
 可以看到上面图片浏览器请求的资源非常多，看起来不方便，可以点击上方的 XHR, 只查看我们需要的内容
 
-![xhr图片](./assets/xhr.jpg)
+![xhr图片](../assets/xhr.jpg)
 
 ## 3. 错误定位
 
@@ -61,14 +61,14 @@ network 下面的信息需要刷新页面前打开 devtool 有请求才会显示
 
             - status 为 40X（最后一位是4以外的数）, 点击这个飘红的请求，右侧会弹出页面（下图为正常的请求，仅作示例）
 
-          ![图片](./assets/example-request.jpg)
+          ![图片](../assets/example-request.jpg)
 
             - 点击 preview, 查看其中的 message
                 1. 如有 xxxx input 'xxxx(字段名)' 类似格式的错误，一般可判明为参数错误，此时点击图中 headers, 滚动条拉到最下方 可以看到前端上传的参数
                 2. 413 Request Entity Too Large, 超出上传限制，一般为后端或 nginx 限制，nginx 可联系前端修改
                 3. 待完善
 
-          ![参数](./assets/params.jpg)
+          ![参数](../assets/params.jpg)
 
     3. 有明确的错误提示时，根据错误提示即可八九不离十判断到底是哪边出错
     

@@ -4,4 +4,4 @@
 
 1. [做点题——递归和按摩师](./notes/massager.md)
 
-### [debug技巧](./debug.md)
+### [debug技巧](summary/debug.md)

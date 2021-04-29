@@ -10,7 +10,10 @@ export default {
                     'notes/massager.md'
                 ]
             },
-            'debug.md',
+            {
+                text: '总结',
+                children: ['summary/debug.md', 'summary/http-requests.md']
+            },
             {
                 text: "test",
                 link: "test.tsx"

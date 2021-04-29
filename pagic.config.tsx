@@ -5,12 +5,15 @@ export default {
         '/': [
             'README.md',
             {
-                text:'随笔',
-                children:[
+                text: '随笔',
+                children: [
                     'notes/massager.md'
                 ]
             },
-            'debug.md',
+            {
+                text: '总结',
+                children: ['summary/debug.md', 'summary/http-requests.md']
+            },
             {
                 text: "test",
                 link: "test.tsx"
