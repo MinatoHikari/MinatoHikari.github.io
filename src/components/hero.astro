@@ -1,0 +1,47 @@
+---
+import { Image } from "@astrojs/image/components";
+import heroImage from "assets/hero.png";
+import Link from "@components/ui/link.astro";
+import { Icon } from "astro-icon";
+---
+
+<main class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-8">
+  <div class="py-6 md:order-1 hidden md:block">
+    <Image
+      src={heroImage}
+      alt="Astronaut in the air"
+      loading="eager"
+      format="avif"
+    />
+  </div>
+  <div>
+    <h1 class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight">
+      欢迎，这是一个懒写博客的人的博客
+    </h1>
+    <p class="text-lg mt-4 text-slate-600 max-w-xl">
+      博客是用 Astro 写的，尝试一下这个 framework 写起博客来到底爽不爽。<wbr /> 另外，欢迎点开 Projects 里面的项目看看，喜欢或者对你有点用的话可以给我点个星。
+    </p>
+    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+      <Link
+        href="#"
+        href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
+        target="_blank"
+        class="flex gap-1 items-center justify-center"
+        rel="noopener">
+        <Icon class="text-white w-5 h-5" name="bx:bxs-collection" />
+
+        Article List</Link
+      >
+      <Link
+        size="lg"
+        style="outline"
+        rel="noopener"
+        href="https://github.com/MinatoHikari"
+        class="flex gap-1 items-center justify-center"
+        target="_blank">
+        <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
+        Github Profile</Link
+      >
+    </div>
+  </div>
+</main>

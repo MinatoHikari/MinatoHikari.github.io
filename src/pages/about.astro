@@ -1,0 +1,63 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Container from '@components/container.astro';
+import Sectionhead from '@components/sectionhead.astro';
+import { Image } from '@astrojs/image/components';
+
+const TeamImg1 = 'https://avatars.githubusercontent.com/u/35342316?v=4?';
+
+const team = [
+  {
+    name: 'MinatoHikari',
+    title: 'Frontend Developer',
+    avatar: {
+      src: TeamImg1,
+      width: 560,
+      height: 560,
+    },
+  },
+];
+---
+
+<Layout title="About">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">About Minatohikari</Fragment>
+      <Fragment slot="desc">大多数时间写 Typescript，有时会写写 go/kotlin. 主要使用 Macos 进行开发。</Fragment>
+    </Sectionhead>
+
+    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
+      <h2 class="font-bold text-3xl text-gray-800">持续写文档/博客是一件困难的事情</h2>
+      <p class="text-lg leading-relaxed text-slate-500">
+        有句话说强迫自己去做不拿手的事情，才能有提高。到底是不是这样，我暂且蒙古，但是博客和文章还是要写起来的。
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        哪怕写个半篇又鸽了。
+      </p>
+      <p class="text-lg leading-relaxed text-slate-500">
+        个人对效率/网络/命令行工具都挺有兴趣，如果你也是爱好者，那欢迎安利给我类似的项目。
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12 text-center">
+      {
+        team.map((item) => (
+          <div class="group">
+            <div class="w-full aspect-square">
+              <Image
+                {...item.avatar}
+                format="avif"
+                alt="Team"
+                class="w-full h-full object-cover rounded transition  group-hover:-translate-y-1 group-hover:shadow-xl"
+              />
+            </div>
+
+            <div class="mt-4 text-center">
+              <h2 class="text-lg text-gray-800"> {item.name}</h2>
+              <h3 class="text-sm text-slate-500"> {item.title}</h3>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </Container>
+</Layout>
