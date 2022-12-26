@@ -4,9 +4,13 @@ import Link from '@components/ui/link.astro';
 import Dropdown from './dropdown.astro';
 
 const menuitems = [
-{
+  {
     title: 'Index',
     path: '/',
+  },
+  {
+    title: 'Blog',
+    path: '/blog',
   },
   {
     title: 'Projects',
@@ -16,9 +20,18 @@ const menuitems = [
         title: 'vite-plugin-filesystem-multi-pages',
         path: 'https://github.com/MinatoHikari/vite-plugin-filesystem-multi-pages',
       },
-      { title: 'Raycast extension/SSH-Tunnel-Manager', path: 'https://github.com/MinatoHikari/SSH-Tunnel-Manager' },
-      { title: 'Raycast extension/Image-Hosts', path: 'https://github.com/MinatoHikari/Image-Hosts' },
-      { title: 'simple-webhook-auto-deploy', path: 'https://github.com/MinatoHikari/simple-webhook-auto-deploy' },
+      {
+        title: 'Raycast extension/SSH-Tunnel-Manager',
+        path: 'https://github.com/MinatoHikari/SSH-Tunnel-Manager',
+      },
+      {
+        title: 'Raycast extension/Image-Hosts',
+        path: 'https://github.com/MinatoHikari/Image-Hosts',
+      },
+      {
+        title: 'simple-webhook-auto-deploy',
+        path: 'https://github.com/MinatoHikari/simple-webhook-auto-deploy',
+      },
       {
         title: 'swagger-to-typescript',
         path: 'https://github.com/MinatoHikari/swagger-to-typescript',
@@ -30,10 +43,7 @@ const menuitems = [
     title: 'About',
     path: '/about',
   },
-  {
-    title: 'Blog',
-    path: '/blog',
-  },
+
   {
     title: 'Contact',
     path: '/contact',
@@ -81,7 +91,7 @@ const menuitems = [
       </div>
     </div>
     <nav
-      class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0"
+      class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0 z-10"
       :class="{ 'block': open, 'hidden': !open }"
       x-transition
     >

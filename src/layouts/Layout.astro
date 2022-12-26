@@ -1,9 +1,9 @@
 ---
-import { SEO } from "astro-seo";
-import Footer from "@components/footer.astro";
-import Navbar from "@components/navbar/navbar.astro";
-import "@fontsource/inter/variable.css";
-import { log } from "astro/dist/core/logger/core";
+import { SEO } from 'astro-seo';
+import Footer from '@components/footer.astro';
+import Navbar from '@components/navbar/navbar.astro';
+import '@fontsource/inter/variable.css';
+import { log } from 'astro/dist/core/logger/core';
 
 export interface Props {
   title: string;
@@ -19,16 +19,13 @@ export interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
-const resolvedImageWithDomain = new URL(
-  "/opengraph.jpg",
-  Astro.site
-).toString();
+const resolvedImageWithDomain = new URL('/opengraph.jpg', Astro.site).toString();
 
 const { title } = Astro.props;
 
 const makeTitle = title
-  ? title + " | " + "Blog.kusano7"
-  : "Blog-Minatohikari: A Blog built by a lazy man";
+  ? title + ' | ' + 'Blog.kusano7'
+  : 'Minatohikari-Blog: A Blog built by a lazy man';
 ---
 
 <!DOCTYPE html>
@@ -40,11 +37,7 @@ const makeTitle = title
     <meta name="generator" content={Astro.generator} />
 
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
-    <SEO
-      title={makeTitle}
-      description="A Blog built by a lazy man."
-      canonical={canonicalURL}
-    />
+    <SEO title={makeTitle} description="A Blog built by a lazy man." canonical={canonicalURL} />
   </head>
   <body>
     <Navbar />
