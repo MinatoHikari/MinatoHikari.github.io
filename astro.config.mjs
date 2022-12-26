@@ -17,6 +17,6 @@ import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astroship.web3templates.com",
+  site: "https://blog.minatohikari.ztzl.moe",
   integrations: [tailwind(), alpinejs(), image(), mdx(), sitemap()]
 });

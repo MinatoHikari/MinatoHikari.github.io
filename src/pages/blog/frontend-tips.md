@@ -4,7 +4,7 @@ excerpt: "none"
 publishDate: "2022-12-26T10:21:36.050Z"
 image: "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?&fit=crop&w=430&h=240"
 category: "Tutorials"
-author: "Minatohikaro"
+author: "Minatohikari"
 layout: "@layouts/BlogLayout.astro"
 tags: [vue, frontend]
 ---
